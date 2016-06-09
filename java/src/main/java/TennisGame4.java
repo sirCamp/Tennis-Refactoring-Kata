@@ -8,6 +8,10 @@ public class TennisGame4 implements TennisGame {
 
 
     private HashMap<String,Integer> scores = new HashMap<String, Integer>();
+
+    /*
+    * if the players were objects it would be more sensible to set this property as Player class property and this could eliminate others if statement
+    * */
     static private HashMap<Integer,String> wonscores = new HashMap<Integer, String>(){{
         put(0, "Love");
         put(1, "Fifteen");
@@ -43,6 +47,10 @@ public class TennisGame4 implements TennisGame {
 
         if(samescore){
 
+            /*
+            * It's possible to use another map build on this one without 4th index, but depend, if would better increase memory usage (by adding another map)
+            * in order to have better performance, or increase cyclomatic complexity with this ternary operator in order to have a low memory usage.
+            * */
             score = scorePlayer1 < 3? wonscores.get(scorePlayer1)+"-All": "Deuce";
         }
         else if (scorePlayer1>=4 || scorePlayer2>=4){
